@@ -223,7 +223,7 @@ class Loris(object):
         transformers = {}
         for sf in source_formats:
             # merge [transforms] options and [transforms][source_format]] options
-            config = { **self.app_configs['transforms'][sf], **global_tranform_options }
+            config = global_tranform_options | self.app_configs['transforms'][sf] 
             transformers[sf] = self._load_transformer(config)
         return transformers
 
