@@ -20,7 +20,7 @@ from loris_exception import ImageException
 from loris_exception import ResolverException
 from os import path, makedirs, unlink, removedirs, symlink
 from subprocess import CalledProcessError
-from urllib import unquote, quote_plus
+from urllib import quote_plus
 from werkzeug.http import parse_date, parse_accept_header, http_date
 from werkzeug.wrappers import Request, Response, BaseResponse, CommonResponseDescriptorsMixin
 import constants
