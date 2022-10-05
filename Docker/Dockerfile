@@ -9,7 +9,7 @@ RUN apt-get update -y && apt-get install -y wget git gcc g++ unzip make pkg-conf
 	liblcms2-dev liblcms2-utils libtiff5-dev libffi-dev
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
-RUN pip3 install Werkzeug configobj bottle python-magic lxml
+# RUN pip3 install Werkzeug configobj bottle python-magic lxml
 
 # WORKDIR /tmp/cmake
 # RUN wget http://www.cmake.org/files/v3.2/cmake-3.2.2.tar.gz && tar xf cmake-3.2.2.tar.gz && cd cmake-3.2.2 && ./configure && make && make install
@@ -31,7 +31,9 @@ RUN echo /usr/lib/`uname -i`-linux-gnu/ >> /etc/ld.so.conf && echo "/usr/local/l
 # Install loris
 RUN mkdir /opt/loris/
 WORKDIR /opt/loris/
+ARG CACHE_DATE=2016-01-01
 RUN git clone https://github.com/ambs/loris.git ./
+RUN git checkout merge-webapp
 
 RUN useradd -d /var/www/loris -s /sbin/false loris
 
@@ -43,7 +45,7 @@ RUN cp -R tests/img/* /usr/local/share/images/
 
 # install loris conf and replace webapp.py (with 'opj' mod), run setup.py 
 COPY loris2.conf etc/loris2.conf
-COPY webapp.py loris/webapp.py
+# COPY webapp.py loris/webapp.py
 RUN ./setup.py install 
 
 # get IIIF validator
