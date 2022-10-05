@@ -9,6 +9,7 @@ RUN apt-get update -y && apt-get install -y wget git gcc g++ unzip make pkg-conf
 	liblcms2-dev liblcms2-utils libtiff5-dev libffi-dev
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN pip3 install pip-tools
 # RUN pip3 install Werkzeug configobj bottle python-magic lxml
 
 # WORKDIR /tmp/cmake
@@ -34,6 +35,7 @@ WORKDIR /opt/loris/
 ARG CACHE_DATE=2016-01-01
 RUN git clone https://github.com/ambs/loris.git ./
 RUN git checkout merge-webapp
+RUN pip-compile requirements.in
 
 RUN useradd -d /var/www/loris -s /sbin/false loris
 
