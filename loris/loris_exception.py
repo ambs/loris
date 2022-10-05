@@ -14,6 +14,8 @@ class RequestException(LorisException):
 class ImageInfoException(LorisException):
     pass
 
+class ImageException(LorisException):
+    pass
 
 class ResolverException(LorisException):
     pass
