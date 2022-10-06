@@ -1,3 +1,15 @@
+# NOTE!!
+
+This is a working repository, and not official.
+It is based on 
+ * https://github.com/loris-imageserver/loris (see readme below)
+ * https://github.com/bodleian/loris-grok-docker (Docker/README.md)
+
+If this repository is helpful to you, I am happy.
+
+-------------------------
+
+
 ![loris icon](loris/data/www/icons/loris-circle-small.png?raw=true) Loris IIIF Image Server
 =============================================================================
 

@@ -20,7 +20,7 @@ from loris_exception import ImageException
 from loris_exception import ResolverException
 from os import path, makedirs, unlink, removedirs, symlink
 from subprocess import CalledProcessError
-from urllib.parse import quote_plus
+from urllib import unquote, quote_plus
 from werkzeug.http import parse_date, parse_accept_header, http_date
 from werkzeug.wrappers import Request, Response, BaseResponse, CommonResponseDescriptorsMixin
 import constants
@@ -223,7 +223,7 @@ class Loris(object):
         transformers = {}
         for sf in source_formats:
             # merge [transforms] options and [transforms][source_format]] options
-            config = global_tranform_options | self.app_configs['transforms'][sf] 
+            config = dict(self.app_configs['transforms'][sf].items() + global_tranform_options.items())
             transformers[sf] = self._load_transformer(config)
         return transformers
 
